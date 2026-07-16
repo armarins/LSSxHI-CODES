@@ -1,0 +1,164 @@
+# =========================================================
+# Git ignore for LSSxHI-CODES repositories
+# =========================================================
+
+# -------------------------
+# Generated outputs
+# -------------------------
+screen_outputs/
+forecast/
+outputs/
+images/
+tmp/
+temp/
+run/*test*.sh
+
+notebooks/others
+notebooks/temp
+notebooks/GWLxHI
+notebooks/CMBWLxHI
+notebooks/GCxHI/*test*.ipynb
+notebooks/GCxHI/*EUCLID*.ipynb
+notebooks/forecast/CV_model0*.ipynb
+notebooks/forecast/plot_allbins.ipynb
+notebooks/forecast/checking_theory_and_data.ipynb
+notebooks/forecast/correcting_script_and_forecast_aps_versions.ipynb
+notebooks/forecast/plot_emcee_chains.ipynb
+notebooks/forecast/emcee_multi_smalltest*desktop*.ipynb
+notebooks/forecast/ploting_aps_dependence.ipynb
+notebooks/forecast/emcee_multi_smalltest*laptop*.ipynb
+notebooks/forecast/Untitled*.ipynb
+notebooks/forecast/plots_CX.ipynb
+notebooks/cross_g_test.ipynb
+
+
+scripts/*editing*.py
+scripts/*old*.py
+scripts/*parallel*.py
+scripts/screen*.txt
+scripts/parameters/*euclid*.yaml
+
+# -------------------------
+# OS / editor junk
+# -------------------------
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# Test / coverage caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# -------------------------
+# C / C++ / Fortran build artifacts
+# -------------------------
+*.o
+*.obj
+*.lo
+*.la
+*.a
+*.so
+*.so.*
+*.dylib
+*.dll
+*.mod
+
+# Executables
+class
+a.out
+
+# CLASS/Make build folders or temp products
+libclass.a
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+*.out
+*.err
+
+# Common generated scientific outputs
+*.png
+*.pdf
+
+# If you often generate these locally and do NOT want them tracked,
+# uncomment the lines below carefully:
+# *.dat
+# *.txt
+# *.npy
+# *.npz
+*.docx
+# -------------------------
+# Python extension build artifacts
+# -------------------------
+python/build/
+python/dist/
+python/*.egg-info/
+
+# Compiled extension files
+python/*.so
+python/*.pyd
+python/*.dll
+
+# -------------------------
+# CMake (if ever used)
+# -------------------------
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.cmake
+compile_commands.json
+
+# -------------------------
+# macOS / Linux misc
+# -------------------------
+.cache/
+
+# -------------------------
+# Local user-specific config
+# -------------------------
+*.local
+*.fits
+*.hdf5
+*.h5
+*.dat
+*.npz
+*.npy
+data/
+__pycache__/
+*.tar
+*.tar.gz
+*.joblib
+*.pkl
