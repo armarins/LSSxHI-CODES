@@ -10,7 +10,7 @@ This codebase accompanies the studies:
 
 ## Pipeline Overview
 
-The codebase is organized into **seven executable Python modes** inside `scripts/`, each paired with a `.ini` configuration file whose parameters can be overridden via command-line arguments. Blind foreground removal (e.g., FastICA, GMCA) and robust transfer-function estimators (e.g., Huber) are powered by the companion **`chisel`** repository (`chisel/scripts/`).
+The codebase is organized into **seven executable Python modes** inside `scripts/`, each paired with a `.ini` configuration file whose parameters can be overridden via command-line arguments. Blind foreground removal (e.g., FastICA, GMCA) and robust transfer-function estimators (e.g., Huber) are powered by the companion **`chisel`** repository (`[include here the GitHub repo]`).
 
 After generating theoretical spectra (Mode 1) and correlated Gaussian realizations (Mode 2), the pipeline splits into two complementary branches:
 1. **Map-Level & Leakage Diagnostics Branch (`1 → 2 → 3 → 4 & 6`)**: Saves per-realization foreground-removed FITS cubes, decomposes all HI/foreground/leakage auto- and cross-spectra, and propagates the ICA filter matrix $W_{\mathrm{FG}}$ analytically.
