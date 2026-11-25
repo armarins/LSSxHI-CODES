@@ -30,7 +30,7 @@ elif sys.version_info[0]==3:
 # This part is for extracting information from parameters.ini file
 ###################################################################
 timei       = time.time()
-PATH        = "/data/AMARINS/LSSxHI-CODES/scripts"
+PATH        = "/Users/alessandromarins/Programmation/LSSxHI-CODES/scripts"
 INI         = "generating_APS_theory.ini"
 name_params = os.path.join(PATH,INI)
 config.read(name_params)

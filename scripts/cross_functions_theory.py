@@ -164,7 +164,14 @@ def omegaHI_biasHI_test(model=None,z=None, OHI=None, bHI=None):
     else:
         return {"omegaHI": 4.86e-4*np.ones_like(z),
                 "biasHI" : 1*np.ones_like(z)}             
-#####################################################################################################
+
+
+def get_growth_rate_interp(camb_params, camb_results):
+    from scipy.interpolate import interp1d
+    z_camb = np.asarray(camb_params.Transfer.PK_redshifts, dtype=float)
+    f_camb = np.asarray(camb_results.get_fsigma8()) / np.asarray(camb_results.get_sigma8())
+    order  = np.argsort(z_camb)
+    return interp1d(z_camb[order], f_camb[order], kind='cubic', fill_value='extrapolate')        
 #####################################################################################################
 #### KERNELS
 ####
@@ -335,7 +342,9 @@ def kernel_cmb_interp(camb_params=None, camb_results=None, interp=False):
         return interp1d(zp, kcmb, kind='cubic')
         
         
-
+#####################################################################################################
+#### APS
+####
 def angular_power_spectrum_ij_old(camb_params=None, 
                               camb_results=None, 
                               Pk_camb_interp=None,
@@ -549,7 +558,7 @@ def kernel_galaxy_clustering_dict(camb_params=None  , camb_results=None, pars=No
         pass    
     if verbose: print('Total processing time: {0:.2f} seg'.format(time.time()-timei))             
     return {'W':kernel_gc, 'z':zv_range}  
-#####################################################################################################
+
 #####################################################################################################
 #### take a matrix and return a dictionary with each z-bin/nu-channel in a key-dictionary
 ####
@@ -613,7 +622,6 @@ def get_galaxy_shotnoise(pars=None, lmin=0,lmax=int(3*256)):
         return {'l':lvec, 'cl':clvec}                
         
     
-#####################################################################################################
 #####################################################################################################
 #### SAVING
 ####
@@ -722,7 +730,7 @@ def get_zeff(numin =980, numax =1260, nbands= 30, n_curves=3):
     return {'zeff': np.around(nu_HI/np.array([nuvec_eff[ibins]]) -1, decimals=2)[0],
             'bins':ibins, 
             'nu_eff':nuvec_eff[ibins]}
-##############################################################################################################
+
 ##############################################################################################################
 def prob_euclid_vec(z_=None,zp_=None,pars=None):
     fout  = pars['f_out']#0.1
@@ -871,7 +879,6 @@ def dNdz_func(pars=None, binning=False, verbose=False,
         raise NameError('There are no {} field implemented'.format(type_field.lower()))     
 
 ##############################################################################################################
-##############################################################################################################
 ## LOAD GALAXY PARAMETERS
 def load_survey_parameters(survey_name = 'LSST', data_release='Y10', type_field='density', mode = 'photometric',path_file=None):
     import yaml
@@ -905,7 +912,6 @@ def load_survey_parameters(survey_name = 'LSST', data_release='Y10', type_field=
             dt = load_pars['lens_sample'][data_release.upper()]  
             dt['zbin_edges']   = np.asarray(dt['zbin_edges'])
             return dt
-##############################################################################################################
 ##############################################################################################################
 # LOAD LSST GALAXY DIST
 #
@@ -960,7 +966,6 @@ def source_bins_lsst(redshift_range, redshift_distribution, dens_pars, normalise
     combined_data = {'redshift_range': redshift_range,'bins': source_redshift_distribution_dict}
     return source_redshift_distribution_dict
 
-##############################################################################################################
 ##############################################################################################################
 def get_bias_model(bias_model=None, bias_value=1, pars=None, path_to_file=None, z_range=None):
     #[1]
